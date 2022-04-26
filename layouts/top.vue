@@ -1,7 +1,6 @@
 <template>
   <div>
-    <Head />
-    Top Layout
+    <Header />
     <slot />
     <Footer />
   </div>

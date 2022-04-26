@@ -1,6 +1,7 @@
 <template>
   <div>
-    Mypage Layout
+    <Header />
     <slot />
+    <Footer />
   </div>
 </template>
