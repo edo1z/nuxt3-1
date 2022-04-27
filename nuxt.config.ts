@@ -1,6 +1,9 @@
 import { defineNuxtConfig } from "nuxt";
 
 export default defineNuxtConfig({
+  publicRuntimeConfig: {
+    apiUrl: process.env.API_URL,
+  },
   app: {
     head: {
       title: "NUXT3-1",

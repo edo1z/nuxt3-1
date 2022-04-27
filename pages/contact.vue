@@ -1,8 +1,10 @@
 <template>
-  <Head>
-    <Title>CONTACT</Title>
-  </Head>
-  <div>Contact</div>
+  <div>
+    <Head>
+      <Title>CONTACT</Title>
+    </Head>
+    <div>Contact</div>
+  </div>
 </template>
 
 <script>
