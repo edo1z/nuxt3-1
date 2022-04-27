@@ -7,4 +7,5 @@ export default defineNuxtConfig({
       meta: [{ property: "ogp:image", content: "default.png" }],
     },
   },
+  modules: ["@nuxtjs/tailwindcss"],
 });
