@@ -9,10 +9,10 @@
 <script setup>
 useHead({
   htmlAttrs: {
-    class: "dark",
+    class: "h-full dark",
   },
   bodyAttrs: {
-    class: "dark:bg-black dark:text-white",
+    class: "h-full dark:bg-black dark:text-white",
   },
 });
 </script>

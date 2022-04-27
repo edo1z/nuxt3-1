@@ -5,8 +5,11 @@
       <Meta property="ogp:image" content="toppage.png" />
     </Head>
     <div class="m-3">
-      <div class="font-bold">Top page</div>
+      <div class="font-bold mb-3 dark:text-cyan-300">Top page</div>
       <ul>
+        <li>
+          <NuxtLink to="/auth/login"> sign in </NuxtLink>
+        </li>
         <li>
           <NuxtLink to="/user"> users </NuxtLink>
         </li>
