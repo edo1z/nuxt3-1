@@ -15,6 +15,7 @@
         </div>
         <div
           class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
+          @click="$router.push('/')"
         >
           <div class="flex-shrink-0 flex items-center">
             <img
