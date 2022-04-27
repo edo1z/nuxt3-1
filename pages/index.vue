@@ -1,6 +1,7 @@
 <template>
   <Head>
     <Title>TOPPAGE</Title>
+    <Meta property="ogp:image" content="toppage.png" />
   </Head>
   <div>Top page</div>
   <ul>
