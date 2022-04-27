@@ -1,6 +1,8 @@
 <template>
-  <div>Users Index</div>
-  <p>API URL {{ $config.apiUrl }}</p>
+  <div>
+    <div>Users Index</div>
+    <p>API URL {{ $config.apiUrl }}</p>
+  </div>
 </template>
 
 <script>
