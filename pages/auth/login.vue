@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const signInGoogle = signInWithGoogle;
+const _signOut = signOut;
 </script>
 
 <template>
@@ -35,7 +36,6 @@ const signInGoogle = signInWithGoogle;
           />
           <div>
             <UiButtonDefault
-              class="mt-5"
               :icon="['fas', 'right-to-bracket']"
               title="Sign in"
             />
@@ -44,19 +44,27 @@ const signInGoogle = signInWithGoogle;
         <hr />
         <div class="space-y-3">
           <UiButtonDefault
-            class="mt-5"
             :icon="['fab', 'google']"
             title="Sign in with Google"
             bgColor="bg-blue-600"
             hoverBgColor="bg-blue-500"
-            @Click="signInGoogle"
+            @click="signInGoogle"
           />
           <UiButtonDefault
-            class="mt-5 bg-cyan-600 hover:bg-cyan-500"
             :icon="['fab', 'twitter']"
             title="Sign in with Twitter"
             bgColor="bg-cyan-600"
             hoverBgColor="bg-cyan-500"
+          />
+        </div>
+        <hr />
+        <div>
+          <UiButtonDefault
+            :icon="['fas', 'sign-out']"
+            title="Sing Out"
+            bgColor="bg-gray-600"
+            hoverBgColor="bg-gray-500"
+            @click="_signOut"
           />
         </div>
       </div>

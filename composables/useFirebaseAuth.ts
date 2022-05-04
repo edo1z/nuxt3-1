@@ -4,8 +4,8 @@ import {
   onAuthStateChanged,
   signInWithRedirect,
   GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
-const provider = new GoogleAuthProvider();
 
 export const initFirebase = async () => {
   console.log("init firebase");
@@ -47,24 +47,31 @@ export const initAuth = async () => {
 export const signIn = () => {
   const firebaseApp = useFirebaseApp();
   const auth = getAuth(firebaseApp.value);
-  signInWithRedirect(auth, provider);
+  //FIXME
 };
 
 export const signInWithGoogle = () => {
   console.log("signInWithGoogle");
   const firebaseApp = useFirebaseApp();
   const auth = getAuth(firebaseApp.value);
-  console.log("auth", auth);
-  signInWithRedirect(auth, provider);
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      console.log("google sign-in success!", result);
+    })
+    .catch((err) => {
+      console.log("google sign-in error!", err.code, err.message);
+    });
 };
 
 export const signInWithTwitter = () => {
   const firebaseApp = useFirebaseApp();
   const auth = getAuth(firebaseApp.value);
-  signInWithRedirect(auth, provider);
+  //FIXME
 };
 
 export const signOut = async () => {
+  console.log("signOut...");
   const firebaseApp = useFirebaseApp();
   const auth = getAuth(firebaseApp.value);
   await auth.signOut();

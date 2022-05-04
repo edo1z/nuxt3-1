@@ -20,7 +20,7 @@ let baseClass =
   " relative w-full flex justify-center py-2 px-4 border border-transparent" +
   " text-sm font-medium rounded-md";
 const btnClass = computed(() => {
-  return `${baseClass} ${props.textColor} ${props.bgColor} hover:${props.hoverBgColor}`;
+  return `${props.textColor} ${props.bgColor} hover:${props.hoverBgColor} ${baseClass}`;
 });
 </script>
 
