@@ -30,36 +30,30 @@
             autocomplete="current-password"
           />
           <div>
-            <UiButtonDefault type="submit" class="mt-5">
-              <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                <LockClosedIcon
-                  class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
-                  aria-hidden="true"
-                />
-              </span>
-              Sign in
-            </UiButtonDefault>
+            <UiButtonDefault
+              class="mt-5"
+              :icon="['fas', 'right-to-bracket']"
+              title="Sign in"
+            />
           </div>
         </div>
         <hr />
-        <UiButtonDefault type="submit" class="mt-5">
-          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-            <LockClosedIcon
-              class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
-              aria-hidden="true"
-            />
-          </span>
-          Sign in with Google
-        </UiButtonDefault>
-        <UiButtonDefault type="submit" class="mt-5">
-          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-            <LockClosedIcon
-              class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
-              aria-hidden="true"
-            />
-          </span>
-          Sign in with Twitter
-        </UiButtonDefault>
+        <div class="space-y-3">
+          <UiButtonDefault
+            class="mt-5"
+            :icon="['fab', 'google']"
+            title="Sign in with Google"
+            bgColor="bg-blue-600"
+            hoverBgColor="bg-blue-500"
+          />
+          <UiButtonDefault
+            class="mt-5 bg-cyan-600 hover:bg-cyan-500"
+            :icon="['fab', 'twitter']"
+            title="Sign in with Twitter"
+            bgColor="bg-cyan-600"
+            hoverBgColor="bg-cyan-500"
+          />
+        </div>
       </div>
     </div>
   </div>
