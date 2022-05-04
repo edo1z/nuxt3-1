@@ -11,16 +11,15 @@ const props = withDefaults(defineProps<Props>(), {
   type: "button",
   textColor: "text-white",
   bgColor: "bg-indigo-600",
-  hoverBgColor: "bg-indigo-500",
+  hoverBgColor: "hover:bg-indigo-500",
   icon: null,
   title: "button",
 });
 let baseClass =
-  "focus:ring-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2" +
-  " relative w-full flex justify-center py-2 px-4 border border-transparent" +
+  " relative w-full flex justify-center py-2 px-4 border-transparent" +
   " text-sm font-medium rounded-md";
 const btnClass = computed(() => {
-  return `${props.textColor} ${props.bgColor} hover:${props.hoverBgColor} ${baseClass}`;
+  return `${props.textColor} ${props.bgColor} ${props.hoverBgColor} ${baseClass}`;
 });
 </script>
 

@@ -47,14 +47,14 @@ const _signOut = signOut;
             :icon="['fab', 'google']"
             title="Sign in with Google"
             bgColor="bg-blue-600"
-            hoverBgColor="bg-blue-500"
+            hoverBgColor="hover:bg-blue-500"
             @click="signInGoogle"
           />
           <UiButtonDefault
             :icon="['fab', 'twitter']"
             title="Sign in with Twitter"
             bgColor="bg-cyan-600"
-            hoverBgColor="bg-cyan-500"
+            hoverBgColor="hover:bg-cyan-500"
           />
         </div>
         <hr />
@@ -63,7 +63,7 @@ const _signOut = signOut;
             :icon="['fas', 'sign-out']"
             title="Sing Out"
             bgColor="bg-gray-600"
-            hoverBgColor="bg-gray-500"
+            hoverBgColor="hover:bg-gray-500"
             @click="_signOut"
           />
         </div>
