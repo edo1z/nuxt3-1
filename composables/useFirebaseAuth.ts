@@ -44,15 +44,21 @@ export const initAuth = async () => {
   });
 };
 
-//     signIn() {
-//       const auth = getAuth($firebaseApp);
-//       signInWithRedirect(auth, provider);
-//     },
-//     async signOut() {
-//       const auth = getAuth($firebaseApp);
-//       await auth.signOut();
-//     },
-//     async getIdToken() {
-//       if (!this.user) return null;
-//       return await this.user.getIdToken();
-//     },
+export const signIn = () => {
+  const firebaseApp = useFirebaseApp();
+  const auth = getAuth(firebaseApp.value);
+  signInWithRedirect(auth, provider);
+};
+
+export const signOut = async () => {
+  const firebaseApp = useFirebaseApp();
+  const auth = getAuth(firebaseApp.value);
+  await auth.signOut();
+};
+
+export const getIdToken = async () => {
+  const firebaseUser = useFirebaseUser();
+  if (firebaseUser.value) return null;
+  // @ts-ignore
+  return await firebaseUser.value.getIdToken();
+};
