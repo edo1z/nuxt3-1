@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const signInGoogle = signInWithGoogle;
+</script>
+
 <template>
   <div>
     <Head>
@@ -45,6 +49,7 @@
             title="Sign in with Google"
             bgColor="bg-blue-600"
             hoverBgColor="bg-blue-500"
+            @Click="signInGoogle"
           />
           <UiButtonDefault
             class="mt-5 bg-cyan-600 hover:bg-cyan-500"
@@ -58,7 +63,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { LockClosedIcon } from "@heroicons/vue/outline";
-</script>

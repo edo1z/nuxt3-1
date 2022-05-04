@@ -50,6 +50,20 @@ export const signIn = () => {
   signInWithRedirect(auth, provider);
 };
 
+export const signInWithGoogle = () => {
+  console.log("signInWithGoogle");
+  const firebaseApp = useFirebaseApp();
+  const auth = getAuth(firebaseApp.value);
+  console.log("auth", auth);
+  signInWithRedirect(auth, provider);
+};
+
+export const signInWithTwitter = () => {
+  const firebaseApp = useFirebaseApp();
+  const auth = getAuth(firebaseApp.value);
+  signInWithRedirect(auth, provider);
+};
+
 export const signOut = async () => {
   const firebaseApp = useFirebaseApp();
   const auth = getAuth(firebaseApp.value);
