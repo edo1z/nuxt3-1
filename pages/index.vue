@@ -8,7 +8,7 @@
       <div class="font-bold mb-3 dark:text-cyan-300">Top page</div>
       <ul>
         <li>
-          <NuxtLink to="/auth/login"> sign in </NuxtLink>
+          <NuxtLink to="/auth/sign-in"> sign in </NuxtLink>
         </li>
         <li>
           <NuxtLink to="/user"> users </NuxtLink>

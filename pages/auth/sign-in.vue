@@ -4,7 +4,6 @@ const _signOut = signOut;
 const email = ref("");
 const password = ref("");
 const signInEmail = () => {
-  console.log("signInEmail...", email.value, password.value);
   signInWithEmail(email.value, password.value);
 };
 </script>

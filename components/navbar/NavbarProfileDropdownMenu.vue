@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-const firebaseUser = useFirebaseUser();
+const signInUser = useSignInUser();
+const _signOut = signOut;
 </script>
 
 <template>
@@ -8,7 +9,7 @@ const firebaseUser = useFirebaseUser();
     <div>
       <MenuButton
         class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-        v-if="firebaseUser"
+        v-if="signInUser"
       >
         <span class="sr-only">Open user menu</span>
         <img
@@ -20,7 +21,7 @@ const firebaseUser = useFirebaseUser();
       <UiButtonDefault
         v-else
         title="Sign In"
-        @click="$router.push('/auth/login')"
+        @click="$router.push('/auth/sign-in')"
       />
     </div>
     <transition
@@ -61,6 +62,7 @@ const firebaseUser = useFirebaseUser();
               active ? 'bg-gray-100' : '',
               'block px-4 py-2 text-sm text-gray-700',
             ]"
+            @click="_signOut"
             >Sign out</a
           >
         </MenuItem>

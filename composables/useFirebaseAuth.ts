@@ -9,7 +9,6 @@ import {
 } from "firebase/auth";
 
 export const initFirebase = async () => {
-  console.log("init firebase");
   const conf = useRuntimeConfig();
   const firebaseConfig = {
     apiKey: conf.firebase.apiKey,
@@ -23,30 +22,27 @@ export const initFirebase = async () => {
 };
 
 export const initAuth = async () => {
-  console.log("initAuth");
   const firebaseApp = useFirebaseApp();
-  const firebaseUser = useFirebaseUser();
-  console.log("firebaseUser", firebaseUser.value);
-  if (!firebaseApp.value) {
-    await initFirebase();
-  }
-  console.log("get auth");
+  const signInStatus = useSignInStatus();
+  const signInUser = useSignInUser();
+  if (!firebaseApp.value) await initFirebase();
   const auth = getAuth(firebaseApp.value);
-  console.log("auth init");
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      console.log("logged in", user);
       // @ts-ignore
-      firebaseUser.value = user;
+      signInUser.value = user;
+      signInStatus.value = "IN";
     } else {
-      console.log("logged out");
-      firebaseUser.value = null;
+      signInUser.value = null;
+      if (signInStatus.value === "IN") {
+        location.reload();
+      }
+      signInStatus.value = "OUT";
     }
   });
 };
 
 export const createUserWithEmail = (email: string, password: string) => {
-  console.log("createUserWithEmail, email, password");
   const firebaseApp = useFirebaseApp();
   const auth = getAuth(firebaseApp.value);
   createUserWithEmailAndPassword(auth, email, password)
@@ -71,7 +67,6 @@ export const signInWithEmail = (email: string, password: string) => {
 };
 
 export const signInWithGoogle = () => {
-  console.log("signInWithGoogle");
   const firebaseApp = useFirebaseApp();
   const auth = getAuth(firebaseApp.value);
   const provider = new GoogleAuthProvider();
@@ -91,15 +86,14 @@ export const signInWithTwitter = () => {
 };
 
 export const signOut = async () => {
-  console.log("signOut...");
   const firebaseApp = useFirebaseApp();
   const auth = getAuth(firebaseApp.value);
   await auth.signOut();
 };
 
 export const getIdToken = async () => {
-  const firebaseUser = useFirebaseUser();
-  if (firebaseUser.value) return null;
+  const signInUser = useSignInUser();
+  if (signInUser.value) return null;
   // @ts-ignore
-  return await firebaseUser.value.getIdToken();
+  return await signInUser.value.getIdToken();
 };
