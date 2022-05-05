@@ -1,6 +1,12 @@
 <script setup lang="ts">
 const signInGoogle = signInWithGoogle;
 const _signOut = signOut;
+const email = ref("");
+const password = ref("");
+const signInEmail = () => {
+  console.log("signInEmail...", email.value, password.value);
+  signInWithEmail(email.value, password.value);
+};
 </script>
 
 <template>
@@ -26,6 +32,7 @@ const _signOut = signOut;
             type="email"
             :required="true"
             placeholder="Email address"
+            v-model="email"
           />
           <UiFormInputText
             label="password"
@@ -33,11 +40,13 @@ const _signOut = signOut;
             :required="true"
             placeholder="Password"
             autocomplete="current-password"
+            v-model="password"
           />
           <div>
             <UiButtonDefault
               :icon="['fas', 'right-to-bracket']"
               title="Sign in"
+              @click="signInEmail"
             />
           </div>
         </div>

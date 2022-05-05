@@ -2,9 +2,10 @@ import { initializeApp } from "firebase/app";
 import {
   getAuth,
   onAuthStateChanged,
-  signInWithRedirect,
   GoogleAuthProvider,
   signInWithPopup,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 
 export const initFirebase = async () => {
@@ -44,10 +45,29 @@ export const initAuth = async () => {
   });
 };
 
-export const signIn = () => {
+export const createUserWithEmail = (email: string, password: string) => {
+  console.log("createUserWithEmail, email, password");
   const firebaseApp = useFirebaseApp();
   const auth = getAuth(firebaseApp.value);
-  //FIXME
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      console.log("success! created user with email", userCredential);
+    })
+    .catch((err) => {
+      console.log("error! create user with email", err.code, err.message);
+    });
+};
+
+export const signInWithEmail = (email: string, password: string) => {
+  const firebaseApp = useFirebaseApp();
+  const auth = getAuth(firebaseApp.value);
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      console.log("success! sign-in with email", userCredential);
+    })
+    .catch((err) => {
+      console.log("error! sign-in with email", err.code, err.message);
+    });
 };
 
 export const signInWithGoogle = () => {
@@ -57,10 +77,10 @@ export const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then((result) => {
-      console.log("google sign-in success!", result);
+      console.log("success! sign-in with google", result);
     })
     .catch((err) => {
-      console.log("google sign-in error!", err.code, err.message);
+      console.log("error! sign-in with google", err.code, err.message);
     });
 };
 

@@ -2,11 +2,20 @@
 interface Props {
   label: string;
   type: string;
+  modelValue: string;
   placeholder?: string;
   autocomplete?: string;
   required?: boolean;
 }
-defineProps<Props>();
+const props = defineProps<Props>();
+const emit = defineEmits(["update:modelValue"]);
+const text = computed({
+  get: () => props.modelValue,
+  set: (value) => {
+    console.log("change text value", value);
+    emit("update:modelValue", value);
+  },
+});
 </script>
 
 <template>
@@ -19,7 +28,8 @@ defineProps<Props>();
       :placeholder="placeholder"
       :autocomplete="autocomplete"
       :required="required"
-      class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+      class="rounded block w-full px-3 py-2 text-black"
+      v-model="text"
     />
   </div>
 </template>
