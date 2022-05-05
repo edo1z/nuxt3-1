@@ -1,6 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: "default",
+  middleware: ["auth"],
 });
 const conf = useRuntimeConfig();
 const { data } = await useFetch(`${conf.apiUrl}/users`);
