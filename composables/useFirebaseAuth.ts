@@ -34,9 +34,6 @@ export const initAuth = async () => {
       signInStatus.value = "IN";
     } else {
       signInUser.value = null;
-      if (signInStatus.value === "IN") {
-        location.reload();
-      }
       signInStatus.value = "OUT";
     }
   });
@@ -105,7 +102,7 @@ export const signOut = async () => {
 
 export const getIdToken = async () => {
   const signInUser = useSignInUser();
-  if (signInUser.value) return null;
+  if (!signInUser.value) return null;
   // @ts-ignore
   return await signInUser.value.getIdToken();
 };
