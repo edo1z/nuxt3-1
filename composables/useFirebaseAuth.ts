@@ -42,6 +42,18 @@ export const initAuth = async () => {
   });
 };
 
+export const waitInitAuth = () => {
+  return new Promise((resolve, reject) => {
+    const signInStatus = useSignInStatus();
+    const timer = setInterval(() => {
+      if (signInStatus.value !== "NONE") {
+        clearInterval(timer);
+        resolve(true);
+      }
+    }, 100);
+  });
+};
+
 export const createUserWithEmail = (email: string, password: string) => {
   const firebaseApp = useFirebaseApp();
   const auth = getAuth(firebaseApp.value);

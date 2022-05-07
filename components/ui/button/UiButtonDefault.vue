@@ -25,7 +25,7 @@ const btnClass = computed(() => {
 
 <template>
   <button :type="type" :class="btnClass">
-    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+    <span class="absolute left-0 inset-y-0 flex items-center pl-3" v-if="icon">
       <font-awesome-icon :icon="icon" />
     </span>
     {{ title }}

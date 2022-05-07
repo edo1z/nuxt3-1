@@ -1,11 +1,7 @@
-<script setup>
-onMounted(async () => {
-  initAuth();
-});
-</script>
-
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <ClientOnly>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </ClientOnly>
 </template>

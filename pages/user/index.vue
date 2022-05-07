@@ -3,16 +3,12 @@ definePageMeta({
   layout: "default",
   middleware: ["auth"],
 });
-const conf = useRuntimeConfig();
-const { data } = await useFetch(`${conf.apiUrl}/users`);
-// FIXME
-const users = data.value.result;
+const { data: users } = await useFetch("/api/users");
 </script>
 
 <template>
   <div>
-    <div>Users Index</div>
-    <p>API URL {{ conf.apiUrl }}</p>
+    <div>Users</div>
     <table>
       <thead>
         <tr>
