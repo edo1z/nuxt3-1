@@ -1,13 +1,19 @@
 <script setup lang="ts">
+import { User } from "@/model/user";
+
 definePageMeta({
   layout: "default",
   middleware: ["auth"],
 });
-const { data: users } = await useFetch("/api/users");
-const hoge = async () => {
-  const token = await getIdToken();
-  console.log("token", token);
-};
+const idToken = await getIdToken();
+const conf = useRuntimeConfig();
+// @ts-ignore
+const { data: users }: { data: User[] } = await useFetch(
+  `${conf.apiUrl}/users`,
+  {
+    headers: { Authorization: `Bearer ${idToken}` },
+  }
+);
 </script>
 
 <template>
@@ -31,7 +37,5 @@ const hoge = async () => {
         </tr>
       </tbody>
     </table>
-
-    <UiButtonDefault title="hoge" @click="hoge" />
   </div>
 </template>
